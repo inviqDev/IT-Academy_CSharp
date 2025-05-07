@@ -4,7 +4,7 @@ static class Program
 {
     private static void Main(string[] args)
     {
-        HomeWork2.RunHomeWork2();
+        Homework2.RunHomeWork2();
 
         Console.ReadKey();
     }

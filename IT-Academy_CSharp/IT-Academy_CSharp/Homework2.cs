@@ -1,23 +1,24 @@
 namespace IT_Academy_CSharp;
 
-public static class HomeWork2
+public static class Homework2
 {
+    private const int MinUserNameLength = 3;
+
     public static void RunHomeWork2()
     {
-        RunHomeWork2Part1();
+        RunHomework2Part1();
         MyUtilities.PrintSeparationLine('-');
-        RunHomeWork2Part2();
+        RunHomework2Part2();
         MyUtilities.PrintSeparationLine('-');
         Console.WriteLine("Bye, Bye!");
     }
 
-    private static void RunHomeWork2Part1()
+    private static void RunHomework2Part1()
     {
         Console.WriteLine("\tЗадание №2.1\n");
 
         var promptMessage = "Введите Ваше имя: ";
-        Console.Write(promptMessage);
-        var userName = Console.ReadLine()?.Trim();
+        var userName = GetValidUserName(promptMessage);
 
         promptMessage = "Введите Ваш возраст: ";
         var userAge = GetValidUserAge(promptMessage);
@@ -31,64 +32,83 @@ public static class HomeWork2
         MyUtilities.PrintValidMessage(taskResultOutputMessage);
     }
 
-    private static double GetValidUserHeight(string? promptMessage)
+    private static string GetValidUserName(string promptMessage)
     {
-        double userHeight;
         do
         {
             Console.Write(promptMessage);
-
-            var validInput = double.TryParse(Console.ReadLine()?.Trim().Replace(',', '.'), out userHeight);
-            if (validInput && userHeight > 0)
+            var userInput = Console.ReadLine()?.Trim() ?? string.Empty;
+            if (userInput.Length >= MinUserNameLength)
             {
-                continue;
+                return userInput;
             }
 
-            var errorDescription = !validInput
-                ? "Неверный формат ввода.\nПожалуйста, введите целое или дробное число (например, 1.64 или 1,64)"
-                : "Рост не может быть отрицательным.\nПожалуйста, введите число > 0.";
+            var errorDescription =
+                $"Неверный формат ввода!\nИмя должно содержать не менее {MinUserNameLength} символов.\n" +
+                $"Пожалуйста, опробуйте снова.";
             MyUtilities.PrintErrorMessage(errorDescription);
-        } while (userHeight <= 0);
-
-        return userHeight;
+        } while (true);
     }
-
+    
     private static int GetValidUserAge(string? promptMessage)
     {
-        int userAge;
         do
         {
             Console.Write(promptMessage);
-            var validInput = int.TryParse(Console.ReadLine()?.Trim().Replace('.', '.'), out userAge);
-            if (validInput && userAge > 0)
+            var userInput = Console.ReadLine()?.Trim() ?? string.Empty;
+            var isValidInput = int.TryParse(userInput, out var userAge);
+            if (isValidInput && userAge > 0)
             {
-                continue;
+                return userAge;
             }
 
-            var errorDescription = !validInput
+            var errorDescription = !isValidInput
                 ? "Неверный формат ввода.\nПожалуйста, введите целое число."
                 : "Возраст не может быть отрицательным.\nПожалуйста, введите число > 0.";
             MyUtilities.PrintErrorMessage(errorDescription);
-        } while (userAge <= 0);
-
-        return userAge;
+        } while (true);
     }
 
-    private static void RunHomeWork2Part2()
+    private static double GetValidUserHeight(string? promptMessage)
+    {
+        do
+        {
+            Console.Write(promptMessage);
+            var userInput = Console.ReadLine()?.Trim().Replace(',', '.') ?? string.Empty;
+            var isValidInput = double.TryParse(userInput, out var userHeight);
+            if (isValidInput && userHeight is > 0 and < 3)
+            {
+                return userHeight;
+            }
+
+            var errorDescription = !isValidInput
+                ? "Неверный формат ввода.\nПожалуйста, введите целое или дробное число (например, 1.64 или 1,64)"
+                : "Рост не может быть отрицательным.\nПожалуйста, введите число > 0 и < 3.";
+            MyUtilities.PrintErrorMessage(errorDescription);
+        } while (true);
+    }
+
+    private static void RunHomework2Part2()
     {
         Console.WriteLine("\tЗадание №2.2\n");
 
         var promptMessage = "Введите первое число: ";
-        var firstValue = GetValidValue("Введите первое число: ");
+        var firstValue = GetValidValue(promptMessage);
 
         promptMessage = "Введите второе число: ";
         var secondValue = GetValidValue(promptMessage);
 
         Console.ForegroundColor = ConsoleColor.Green;
+        PrintHomeTask2Result(firstValue, secondValue);
+        Console.ResetColor();
+    }
+
+    private static void PrintHomeTask2Result(double firstValue, double secondValue)
+    {
         Console.WriteLine($"{firstValue} + {secondValue} = {firstValue + secondValue}\n" +
                           $"{firstValue} - {secondValue} = {firstValue - secondValue}\n" +
                           $"{firstValue} * {secondValue} = {firstValue * secondValue}");
-        
+
         if (secondValue != 0)
         {
             Console.WriteLine($"{firstValue} / {secondValue} = {firstValue / secondValue}");
@@ -98,28 +118,22 @@ public static class HomeWork2
             var errorDescription = $"{firstValue} / {secondValue} : На ноль делить нельзя!";
             MyUtilities.PrintErrorMessage(errorDescription);
         }
-
-        Console.ResetColor();
     }
 
     private static double GetValidValue(string promptMessage)
     {
-        double validValue;
-        var invalidUserInput = true;
         do
         {
             Console.Write(promptMessage);
-            if (double.TryParse(Console.ReadLine()?.Trim().Replace(',', '.'), out validValue))
+            var userInput = Console.ReadLine()?.Trim().Replace(',', '.') ?? string.Empty;
+            if (double.TryParse(userInput, out var validValue))
             {
-                invalidUserInput = false;
-                continue;
+                return validValue;
             }
 
             var errorDescription = "Неверный формат ввода! Пожалуйста, введите целое или дробное число.\n" +
                                    "Разделитель для дробного числа: «,» или «.»!";
             MyUtilities.PrintErrorMessage(errorDescription);
-        } while (invalidUserInput);
-
-        return validValue;
+        } while (true);
     }
 }
