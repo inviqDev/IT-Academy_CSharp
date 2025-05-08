@@ -45,7 +45,7 @@ public static class Homework2
 
             var errorDescription =
                 $"Неверный формат ввода!\nИмя должно содержать не менее {MinUserNameLength} символов.\n" +
-                $"Пожалуйста, опробуйте снова.";
+                $"Пожалуйста, введите значение заново.";
             MyUtilities.PrintErrorMessage(errorDescription);
         } while (true);
     }
@@ -57,14 +57,14 @@ public static class Homework2
             Console.Write(promptMessage);
             var userInput = Console.ReadLine()?.Trim() ?? string.Empty;
             var isValidInput = int.TryParse(userInput, out var userAge);
-            if (isValidInput && userAge > 0)
+            if (isValidInput && userAge is > 0 and < 125)
             {
                 return userAge;
             }
 
             var errorDescription = !isValidInput
                 ? "Неверный формат ввода.\nПожалуйста, введите целое число."
-                : "Возраст не может быть отрицательным.\nПожалуйста, введите число > 0.";
+                : "Возраст не может быть отрицательным.\nПожалуйста, введите число > 0 и < 125.";
             MyUtilities.PrintErrorMessage(errorDescription);
         } while (true);
     }
@@ -83,7 +83,7 @@ public static class Homework2
 
             var errorDescription = !isValidInput
                 ? "Неверный формат ввода.\nПожалуйста, введите целое или дробное число (например, 1.64 или 1,64)"
-                : "Рост не может быть отрицательным.\nПожалуйста, введите число > 0 и < 3.";
+                : "Рост не может быть равен 0 или быть отрицательным.\nПожалуйста, введите число > 0 и < 3.";
             MyUtilities.PrintErrorMessage(errorDescription);
         } while (true);
     }
@@ -99,11 +99,11 @@ public static class Homework2
         var secondValue = GetValidValue(promptMessage);
 
         Console.ForegroundColor = ConsoleColor.Green;
-        PrintHomeTask2Result(firstValue, secondValue);
+        PrintHomework2Part2Result(firstValue, secondValue);
         Console.ResetColor();
     }
 
-    private static void PrintHomeTask2Result(double firstValue, double secondValue)
+    private static void PrintHomework2Part2Result(double firstValue, double secondValue)
     {
         Console.WriteLine($"{firstValue} + {secondValue} = {firstValue + secondValue}\n" +
                           $"{firstValue} - {secondValue} = {firstValue - secondValue}\n" +
