@@ -2,8 +2,6 @@ namespace IT_Academy_CSharp;
 
 public static class Homework2
 {
-    private const int MinUserNameLength = 3;
-
     public static void RunHomeWork2()
     {
         RunHomework2Part1();
@@ -38,14 +36,13 @@ public static class Homework2
         {
             Console.Write(promptMessage);
             var userInput = Console.ReadLine()?.Trim() ?? string.Empty;
-            if (userInput.Length >= MinUserNameLength)
+            if (userInput != string.Empty)
             {
                 return userInput;
             }
 
-            var errorDescription =
-                $"Неверный формат ввода!\nИмя должно содержать не менее {MinUserNameLength} символов.\n" +
-                $"Пожалуйста, введите значение заново.";
+            var errorDescription = "Неверный формат ввода!\n" +
+                                   "Пожалуйста, введите имя заново.";
             MyUtilities.PrintErrorMessage(errorDescription);
         } while (true);
     }
@@ -57,7 +54,7 @@ public static class Homework2
             Console.Write(promptMessage);
             var userInput = Console.ReadLine()?.Trim() ?? string.Empty;
             var isValidInput = int.TryParse(userInput, out var userAge);
-            if (isValidInput && userAge is > 0 and < 125)
+            if (isValidInput && userAge > 0)
             {
                 return userAge;
             }
