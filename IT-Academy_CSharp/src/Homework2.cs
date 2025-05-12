@@ -27,7 +27,7 @@ public static class Homework2
         var taskResultOutputMessage = $"Привет, {userName}!\n" +
                                       $"\tВаш возраст: {userAge} лет.\n" +
                                       $"\t\tВаш рост: {userHeight:F2} м.";
-        MyUtilities.PrintValidMessage(taskResultOutputMessage);
+        MyUtilities.PrintGreenColorMessage(taskResultOutputMessage);
     }
 
     private static string GetValidUserName(string promptMessage)
@@ -43,7 +43,7 @@ public static class Homework2
 
             var errorDescription = "Неверный формат ввода!\n" +
                                    "Пожалуйста, введите имя заново.";
-            MyUtilities.PrintErrorMessage(errorDescription);
+            MyUtilities.PrintRedColorMessage(errorDescription);
         } while (true);
     }
     
@@ -54,15 +54,15 @@ public static class Homework2
             Console.Write(promptMessage);
             var userInput = Console.ReadLine()?.Trim() ?? string.Empty;
             var isValidInput = int.TryParse(userInput, out var userAge);
-            if (isValidInput && userAge > 0)
+            if (isValidInput && userAge >= 0)
             {
                 return userAge;
             }
 
             var errorDescription = !isValidInput
                 ? "Неверный формат ввода.\nПожалуйста, введите целое число."
-                : "Возраст не может быть отрицательным.\nПожалуйста, введите число > 0 и < 125.";
-            MyUtilities.PrintErrorMessage(errorDescription);
+                : "Возраст не может быть отрицательным.\nПожалуйста, введите число >= 0";
+            MyUtilities.PrintRedColorMessage(errorDescription);
         } while (true);
     }
 
@@ -81,7 +81,7 @@ public static class Homework2
             var errorDescription = !isValidInput
                 ? "Неверный формат ввода.\nПожалуйста, введите целое или дробное число (например, 1.64 или 1,64)"
                 : "Рост не может быть равен 0 или быть отрицательным.\nПожалуйста, введите число > 0 и < 3.";
-            MyUtilities.PrintErrorMessage(errorDescription);
+            MyUtilities.PrintRedColorMessage(errorDescription);
         } while (true);
     }
 
@@ -113,7 +113,7 @@ public static class Homework2
         else
         {
             var errorDescription = $"{firstValue} / {secondValue} : На ноль делить нельзя!";
-            MyUtilities.PrintErrorMessage(errorDescription);
+            MyUtilities.PrintRedColorMessage(errorDescription);
         }
     }
 
@@ -130,7 +130,7 @@ public static class Homework2
 
             var errorDescription = "Неверный формат ввода! Пожалуйста, введите целое или дробное число.\n" +
                                    "Разделитель для дробного числа: «,» или «.»!";
-            MyUtilities.PrintErrorMessage(errorDescription);
+            MyUtilities.PrintRedColorMessage(errorDescription);
         } while (true);
     }
 }

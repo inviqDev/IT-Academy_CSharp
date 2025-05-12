@@ -5,7 +5,6 @@ static class Program
     private static void Main(string[] args)
     {
         Homework2.RunHomeWork2();
-
         Console.ReadKey();
     }
 }
