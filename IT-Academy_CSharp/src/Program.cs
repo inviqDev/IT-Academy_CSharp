@@ -2,9 +2,9 @@
 
 static class Program
 {
-    private static void Main(string[] args)
+    private static void Main()
     {
-        Homework2.RunHomeWork2();
+        Homework4.RunHomework4();
         Console.ReadKey();
     }
 }
