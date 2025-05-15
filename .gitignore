@@ -1,5 +1,6 @@
 # Visual Studio cache/options directory
 .vs/
+.idea/
 
 # Build results
 [Dd]ebug/
@@ -11,4 +12,3 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
-/.idea/
