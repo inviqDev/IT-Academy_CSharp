@@ -84,7 +84,14 @@ public static class Homework3
             Console.WriteLine(PromptMessageTask2);
 
             var userInput = Console.ReadKey(true).Key;
-            if (userInput is ConsoleKey.D1 or ConsoleKey.D2)
+            var validInput = userInput switch
+            {
+                ConsoleKey.D1 or ConsoleKey.D2 => true,
+                ConsoleKey.NumPad1 or ConsoleKey.NumPad2 => true,
+                _ => false
+            };
+            
+            if (validInput)
             {
                 var inputResult = userInput == ConsoleKey.D1;
                 MyUtilities.PrintGreenColorMessage($"\nThe chosen boolean is {inputResult}.\n");
