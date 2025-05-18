@@ -9,7 +9,7 @@ public static partial class Homework4
         Console.WriteLine("\tHomework 4");
 
         RunHomework4Part1(7);
-        RunHomework4Part2(-99, 99, 5);
+        RunHomework4Part2();
         RunHomework4Part3();
         RunHomework4Part4();
 
@@ -116,10 +116,14 @@ public static partial class Homework4
  */
 public static partial class Homework4
 {
-    private static void RunHomework4Part2(int minValue, int maxValue, int divider)
+    private static void RunHomework4Part2()
     {
+        var minTwoDigitValue = -99;
+        var maxTwoDigitValue = 99;
+        var divider = 5;
         var taskResult = string.Empty;
-        for (var i = minValue; i <= maxValue; i++)
+        
+        for (var i = minTwoDigitValue; i <= maxTwoDigitValue; i++)
         {
             if (i % divider == 0)
             {
