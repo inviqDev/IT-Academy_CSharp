@@ -8,8 +8,8 @@ public static partial class Homework4
     {
         Console.WriteLine("\tHomework 4");
 
-        RunHomework4Part1();
-        RunHomework4Part2();
+        RunHomework4Part1(7);
+        RunHomework4Part2(-99, 99, 5);
         RunHomework4Part3();
         RunHomework4Part4();
 
@@ -24,11 +24,10 @@ public static partial class Homework4
  */
 public static partial class Homework4
 {
-    private static void RunHomework4Part1()
+    private static void RunHomework4Part1(int arraySize)
     {
-        var arraySize = 8; // <= Implement Console.ReadLine() for flexibility?
+        // var arraySize = 8; <= Implement Console.ReadLine() for flexibility?
         var array = InstantiateNewArray(arraySize);
-
         if (array != null)
         {
             FillArrayWithRandomInt(array);
@@ -117,14 +116,10 @@ public static partial class Homework4
  */
 public static partial class Homework4
 {
-    private static void RunHomework4Part2()
+    private static void RunHomework4Part2(int minValue, int maxValue, int divider)
     {
-        var minTwoDigitNumber = -99;
-        var maxTwoDigitNumber = 99;
-        var divider = 5;
         var taskResult = string.Empty;
-
-        for (var i = minTwoDigitNumber; i <= maxTwoDigitNumber; i++)
+        for (var i = minValue; i <= maxValue; i++)
         {
             if (i % divider == 0)
             {
