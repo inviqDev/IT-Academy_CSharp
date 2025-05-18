@@ -26,8 +26,8 @@ public static partial class Homework4
 {
     private static void RunHomework4Part1()
     {
-        var desiredArrayLength = 8; // <= Implement Console.ReadLine() for flexibility?
-        var array = InstantiateNewArray(desiredArrayLength);
+        var arraySize = 8; // <= Implement Console.ReadLine() for flexibility?
+        var array = InstantiateNewArray(arraySize);
 
         if (array != null)
         {
@@ -53,12 +53,9 @@ public static partial class Homework4
 
     private static int[]? InstantiateNewArray(int arraySize)
     {
-        const int minArraySize = 4;
-        const int maxArraySize = 1000;
-        var array = arraySize is >= minArraySize and <= maxArraySize
-            ? new int[Random.Next(minArraySize, arraySize)]
-            : null;
-
+        var minArraySize = 1;
+        var array = arraySize >= minArraySize ? new int[arraySize] : null;
+        
         return array;
     }
 
@@ -94,11 +91,11 @@ public static partial class Homework4
     {
         MyUtilities.PrintGreenColorMessage("\nPrint with \"Do-While loop\"\n");
 
-        var index = array.Length - 1;
+        var index = 0;
         do
         {
-            Console.WriteLine($"Index {index} : {array[index--]}");
-        } while (index >= 0);
+            Console.WriteLine($"Index {index} : {array[index++]}");
+        } while (index < array.Length);
     }
 
     private static void PrintArrayUsingForeachLoop(int[] array)
@@ -120,13 +117,14 @@ public static partial class Homework4
  */
 public static partial class Homework4
 {
-    private static void RunHomework4Part2(int divider = 5)
+    private static void RunHomework4Part2()
     {
-        var minTwoDigitNumber = 10;
+        var minTwoDigitNumber = -99;
         var maxTwoDigitNumber = 99;
+        var divider = 5;
         var taskResult = string.Empty;
 
-        for (var i = minTwoDigitNumber; i <= maxTwoDigitNumber; i += divider)
+        for (var i = minTwoDigitNumber; i <= maxTwoDigitNumber; i++)
         {
             if (i % divider == 0)
             {
