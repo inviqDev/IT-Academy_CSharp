@@ -1,6 +1,6 @@
-﻿namespace IT_Academy_CSharp;
+namespace IT_Academy_CSharp;
 
-static class Program
+internal static class Program
 {
     private static void Main()
     {
