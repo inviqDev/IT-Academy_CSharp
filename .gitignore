@@ -1,6 +1,11 @@
 # Visual Studio cache/options directory
 .vs/
 
+# JetBrains Rider / ReSharper solution settings
+*.sln.DotSettings
+*.sln.DotSettings.user
+.idea/
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -11,4 +16,3 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
-/.idea/
