@@ -21,7 +21,7 @@ public class Book
     public int Pages
     {
         get => _pages;
-        private set => _pages = value > 0 ? value : 0;
+        private set => _pages = value >= 0 ? value : 0;
     }
 
     public Book()
