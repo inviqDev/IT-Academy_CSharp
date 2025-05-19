@@ -1,10 +1,10 @@
-﻿namespace IT_Academy_CSharp;
+namespace IT_Academy_CSharp;
 
 internal static class Program
 {
     private static void Main()
     {
-        Homework3.RunHomework3();
+        Homework4.RunHomework4();
         Console.ReadKey();
     }
 }
