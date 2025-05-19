@@ -4,7 +4,8 @@ static class Program
 {
     private static void Main()
     {
-        Homework3.RunHomework3();
+        Homework5.RunHomework5();
+        
         Console.ReadKey();
     }
 }
