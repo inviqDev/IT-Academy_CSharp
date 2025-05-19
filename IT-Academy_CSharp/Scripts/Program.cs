@@ -4,7 +4,7 @@ internal static class Program
 {
     private static void Main()
     {
-        Homework4.RunHomework4();
+        Homework5.RunHomework5();
         Console.ReadKey();
     }
 }
