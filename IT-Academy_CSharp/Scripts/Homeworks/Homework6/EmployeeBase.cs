@@ -1,5 +1,3 @@
-using System.Globalization;
-
 namespace IT_Academy_CSharp.Homework6;
 
 public abstract class EmployeeBase
@@ -32,7 +30,7 @@ public abstract class EmployeeBase
                 MyUtilities.PrintRedColorMessage(errorMessage);
                 continue;
             }
-            
+
             var formattedName = MyUtilities.TextInfo.ToTitleCase(input);
             var workerNameMessage = $"Worker's name is set as {formattedName}";
             MyUtilities.PrintGreenColorMessage(workerNameMessage);
@@ -47,6 +45,7 @@ public abstract class EmployeeBase
     }
 
     public abstract void GetDetails();
+
     private protected string GetEmployeeBaseInfo()
     {
         return $"Name: {Name} | Position: {Position}";

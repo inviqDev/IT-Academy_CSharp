@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices.JavaScript;
-
 namespace IT_Academy_CSharp.Homework6;
 
 /*
@@ -27,7 +25,7 @@ namespace IT_Academy_CSharp.Homework6;
      FindEmployee(string name) — ищет сотрудника по имени.
 
      Вложенный класс:
-     В классе Manager создайте вложенный класс Project, который описывает проект, за который отвечает менеджер:
+     В классе Manager создайте вложенный класс Project, с описыванием проекта, за который отвечает менеджер:
      Поля:
      ProjectName,
      Deadline.
@@ -36,7 +34,7 @@ namespace IT_Academy_CSharp.Homework6;
 
 public static class Homework6Main
 {
-    private static readonly ConsoleKey[] MainMenuValidInputs =
+    private static readonly ConsoleKey[] MainMenuValidInputs = 
     [
         ConsoleKey.D1, ConsoleKey.NumPad1,
         ConsoleKey.D2, ConsoleKey.NumPad2,
@@ -190,7 +188,8 @@ public static class Homework6Main
 
     private static EmployeeBase CreateNewEmployee()
     {
-        var validConsoleInputs = MyUtilities.GetValidNumbericConsoleKeyArray(4, 2);
+        var menuOptionsAmount = 2;
+        var validConsoleInputs = MyUtilities.GetAllowedNumericKeys(menuOptionsAmount);
         Console.Clear();
 
         do
@@ -204,6 +203,7 @@ public static class Homework6Main
                 {
                     ConsoleKey.D1 or ConsoleKey.NumPad1 => new Worker(),
                     ConsoleKey.D2 or ConsoleKey.NumPad2 => new Manager(),
+                    _ => throw new ArgumentOutOfRangeException()
                 };
             }
 

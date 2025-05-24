@@ -3,15 +3,13 @@ namespace IT_Academy_CSharp.Homework6;
 public class Manager : EmployeeBase
 {
     private Project _currentProject;
-    private Enums.Departments _currentDepartment;
-
     public Enums.Departments Department { get; set; }
 
     public Manager()
     {
         Position = Enums.Positions.Manager;
-        _currentProject = new Project(this);
         Department = GetManagerDepartment();
+        _currentProject = new Project(this);
     }
 
     public Manager(string? name, Enums.Departments department,
@@ -36,7 +34,8 @@ public class Manager : EmployeeBase
 
     private Enums.Departments GetManagerDepartment()
     {
-        var validInputButtons = MyUtilities.GetValidNumbericConsoleKeyArray(4, 4);
+        var menuOptionsAmount = 4;
+        var validInputButtons = MyUtilities.GetAllowedNumericKeys(menuOptionsAmount);
 
         do
         {
@@ -125,7 +124,8 @@ public class Manager : EmployeeBase
 
         private Enums.Projects GetManagerProject()
         {
-            var validInputButtons = MyUtilities.GetValidNumbericConsoleKeyArray(4, 4);
+            var menuOptionsAmount = 2;
+            var validInputButtons = MyUtilities.GetAllowedNumericKeys(menuOptionsAmount);
             do
             {
                 Console.WriteLine(ConsoleMessages.ManagerProjectSelectionPrompt);

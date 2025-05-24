@@ -64,7 +64,7 @@ public static class ConsoleMessages
 
     public static readonly string ManagerDepartmentSelectionInvalidInputMessage =
         """
-        \nInvalid department selection for the manager!
+        Invalid department selection for the manager!
         Please press one of the following keys:
         1 – Moscow
         2 – London

@@ -62,7 +62,8 @@ public class Worker : EmployeeBase
 
     private static Enums.Shift GetWorkerShift()
     {
-        var validButtons = MyUtilities.GetValidNumbericConsoleKeyArray(6, 3);
+        var menuOptionsAmount = 3;
+        var validButtons = MyUtilities.GetAllowedNumericKeys(menuOptionsAmount);
 
         do
         {
