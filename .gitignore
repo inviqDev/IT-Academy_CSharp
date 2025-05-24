@@ -4,6 +4,8 @@
 # JetBrains Rider / ReSharper solution settings
 *.sln.DotSettings
 *.sln.DotSettings.user
+*.csproj.DotSettings
+*.csproj.DotSettings.user
 .idea/
 
 # Build results

@@ -1,6 +1,6 @@
 namespace IT_Academy_CSharp;
 
-public static class Enums
+internal class Enums
 {
     public enum AgeGroup
     {
@@ -8,6 +8,6 @@ public static class Enums
         Child,
         Teenager,
         Adult,
-        Senior
+        Senior,
     }
 }

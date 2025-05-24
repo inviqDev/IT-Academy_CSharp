@@ -1,4 +1,4 @@
-namespace IT_Academy_CSharp;
+namespace IT_Academy_CSharp.Homework5;
 
 /*          #дз5
  * 1. Создайте класс Book:
@@ -12,7 +12,7 @@ namespace IT_Academy_CSharp;
  * 5. Добавьте метод GetDescription, который возвращает строку: “Название: <Title>, Автор: <Author>, Страниц: <Pages>”
  */
 
-public static class Homework5
+public static class Homework5Main
 {
     public static void RunHomework5()
     {
