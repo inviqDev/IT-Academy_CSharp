@@ -77,33 +77,33 @@ public static class MyUtilities
     /// Returns an array of ConsoleKey values representing valid numeric digit keys
     /// (both main keyboard D0–D9 and NumPad0–NumPad9) up to the specified maximum digit.
     /// </summary>
-    /// <param name="lastAllowedKey">
+    /// <param name="lastAllowedDigit">
     /// The highest digit (1 through 9) to include in the returned keys.
-    /// For example, lastAllowedKey = 4 includes:
+    /// For example, lastAllowedDigit = 4 includes:
     /// ConsoleKeys.D1, ConsoleKeys.NumPad1, …, ConsoleKeys.D4, ConsoleKeys.NumPad4.
     /// </param>
     /// <returns>
     /// An array of ConsoleKey representing the allowed numeric inputs.
     /// </returns>
-    public static ConsoleKey[] GetAllowedNumericKeys(int lastAllowedKey)
+    public static ConsoleKey[] GetAllowedNumericKeys(int lastAllowedDigit)
     {
         ConsoleKey[] validInputButtons =
         [
-            ConsoleKey.D1, ConsoleKey.NumPad1, // if lastAllowedKey = 1
-            ConsoleKey.D2, ConsoleKey.NumPad2, // if lastAllowedKey = 2
-            ConsoleKey.D3, ConsoleKey.NumPad3, // if lastAllowedKey = 3
-            ConsoleKey.D4, ConsoleKey.NumPad4, // if lastAllowedKey = 4
-            ConsoleKey.D5, ConsoleKey.NumPad5, // if lastAllowedKey = 5
-            ConsoleKey.D6, ConsoleKey.NumPad6, // if lastAllowedKey = 6
-            ConsoleKey.D7, ConsoleKey.NumPad7, // if lastAllowedKey = 7
-            ConsoleKey.D8, ConsoleKey.NumPad8, // if lastAllowedKey = 8
-            ConsoleKey.D9, ConsoleKey.NumPad9, // if lastAllowedKey = 9
-            ConsoleKey.D0, ConsoleKey.NumPad0, // if lastAllowedKey = 10
+            ConsoleKey.D1, ConsoleKey.NumPad1, // if lastAllowedDigit = 1
+            ConsoleKey.D2, ConsoleKey.NumPad2, // if lastAllowedDigit = 2
+            ConsoleKey.D3, ConsoleKey.NumPad3, // if lastAllowedDigit = 3
+            ConsoleKey.D4, ConsoleKey.NumPad4, // if lastAllowedDigit = 4
+            ConsoleKey.D5, ConsoleKey.NumPad5, // if lastAllowedDigit = 5
+            ConsoleKey.D6, ConsoleKey.NumPad6, // if lastAllowedDigit = 6
+            ConsoleKey.D7, ConsoleKey.NumPad7, // if lastAllowedDigit = 7
+            ConsoleKey.D8, ConsoleKey.NumPad8, // if lastAllowedDigit = 8
+            ConsoleKey.D9, ConsoleKey.NumPad9, // if lastAllowedDigit = 9
+            ConsoleKey.D0, ConsoleKey.NumPad0, // if lastAllowedDigit = 10
         ];
         
          // ConsoleKeys need to be selected as pairs => value[0] and value[1] have the same logic, etc.
-         // To include all buttons <lastAllowedKey> must be multiplied by 2
-         lastAllowedKey *= 2;
-        return validInputButtons[..lastAllowedKey];
+         // To include all buttons <lastAllowedDigit> must be multiplied by 2
+         lastAllowedDigit *= 2;
+        return validInputButtons[..lastAllowedDigit];
     }
 }
