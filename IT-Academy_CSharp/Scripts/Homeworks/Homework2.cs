@@ -34,7 +34,7 @@ public static class Homework2
     {
         do
         {
-            Console.Write(promptMessage);
+            Console.WriteLine(promptMessage);
             var userInput = Console.ReadLine()?.Trim() ?? string.Empty;
             if (userInput != string.Empty)
             {
