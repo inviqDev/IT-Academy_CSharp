@@ -1,4 +1,4 @@
-namespace IT_Academy_CSharp.Homework6;
+namespace IT_Academy_CSharp.Scripts.Homeworks.Homework6;
 
 public static class ConsoleMessages
 {
