@@ -4,7 +4,7 @@ public abstract class EmployeeBase
 {
     public string? Name { get; private set; }
 
-    public Enums.Positions Position { get; private protected set; }
+    public Positions Position { get; private protected set; }
 
     private protected EmployeeBase()
     {

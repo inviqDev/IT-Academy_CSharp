@@ -3,19 +3,19 @@ namespace IT_Academy_CSharp.Homework6;
 public class Manager : EmployeeBase
 {
     private Project _currentProject;
-    public Enums.Departments Department { get; set; }
+    public Departments Department { get; set; }
 
     public Manager()
     {
-        Position = Enums.Positions.Manager;
+        Position = Positions.Manager;
         Department = GetManagerDepartment();
         _currentProject = new Project(this);
     }
 
-    public Manager(string? name, Enums.Departments department,
-        Enums.Projects currentProject, DateTime deadline) : base(name)
+    public Manager(string? name, Departments department,
+        Projects currentProject, DateTime deadline) : base(name)
     {
-        Position = Enums.Positions.Manager;
+        Position = Positions.Manager;
         Department = department;
 
         _currentProject = new Project(this, currentProject, deadline)
@@ -32,7 +32,7 @@ public class Manager : EmployeeBase
         MyUtilities.PrintGreenColorMessage($"{baseInfo} | {uniqueInfo}");
     }
 
-    private Enums.Departments GetManagerDepartment()
+    private Departments GetManagerDepartment()
     {
         var menuOptionsAmount = 4;
         var validInputButtons = MyUtilities.GetAllowedNumericKeys(menuOptionsAmount);
@@ -46,10 +46,10 @@ public class Manager : EmployeeBase
             {
                 var department = input switch
                 {
-                    ConsoleKey.D1 or ConsoleKey.NumPad1 => Enums.Departments.Moscow,
-                    ConsoleKey.D2 or ConsoleKey.NumPad2 => Enums.Departments.London,
-                    ConsoleKey.D3 or ConsoleKey.NumPad3 => Enums.Departments.Madrid,
-                    ConsoleKey.D4 or ConsoleKey.NumPad4 => Enums.Departments.Warsaw,
+                    ConsoleKey.D1 or ConsoleKey.NumPad1 => Departments.Moscow,
+                    ConsoleKey.D2 or ConsoleKey.NumPad2 => Departments.London,
+                    ConsoleKey.D3 or ConsoleKey.NumPad3 => Departments.Madrid,
+                    ConsoleKey.D4 or ConsoleKey.NumPad4 => Departments.Warsaw,
                 };
 
                 var consoleMessage = $"\n{Name}'s department is {department}\n";
@@ -74,7 +74,7 @@ public class Manager : EmployeeBase
         private readonly Manager? _projectOwner;
         private DateTime _projectDeadline;
 
-        public Enums.Projects CurrentProject { get; set; }
+        public Projects CurrentProject { get; set; }
 
         public DateTime ProjectDeadline
         {
@@ -89,7 +89,7 @@ public class Manager : EmployeeBase
             ProjectDeadline = GetManagerProjectDeadline();
         }
 
-        internal Project(Manager projectOwner, Enums.Projects currentProject, DateTime deadline) : this()
+        internal Project(Manager projectOwner, Projects currentProject, DateTime deadline) : this()
         {
             _projectOwner = projectOwner;
             CurrentProject = currentProject;
@@ -122,9 +122,9 @@ public class Manager : EmployeeBase
             } while (true);
         }
 
-        private Enums.Projects GetManagerProject()
+        private Projects GetManagerProject()
         {
-            var menuOptionsAmount = 2;
+            var menuOptionsAmount = 4;
             var validInputButtons = MyUtilities.GetAllowedNumericKeys(menuOptionsAmount);
             do
             {
@@ -135,10 +135,10 @@ public class Manager : EmployeeBase
                 {
                     var currentProject = input switch
                     {
-                        ConsoleKey.D1 or ConsoleKey.NumPad1 => Enums.Projects.Doom5,
-                        ConsoleKey.D2 or ConsoleKey.NumPad2 => Enums.Projects.GTA7,
-                        ConsoleKey.D3 or ConsoleKey.NumPad3 => Enums.Projects.CS3,
-                        ConsoleKey.D4 or ConsoleKey.NumPad4 => Enums.Projects.DOTA4,
+                        ConsoleKey.D1 or ConsoleKey.NumPad1 => Projects.Doom5,
+                        ConsoleKey.D2 or ConsoleKey.NumPad2 => Projects.GTA7,
+                        ConsoleKey.D3 or ConsoleKey.NumPad3 => Projects.CS3,
+                        ConsoleKey.D4 or ConsoleKey.NumPad4 => Projects.DOTA4,
                     };
 
                     var consoleMessage = $"{_projectOwner?.Name}'s current project is {currentProject}\n";

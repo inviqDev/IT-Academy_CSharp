@@ -2,13 +2,13 @@ namespace IT_Academy_CSharp.Homework6;
 
 public static class EmployeeRegistry
 {
-    private static readonly List<EmployeeBase> _employees = [];
+    private static readonly List<EmployeeBase> Employees = [];
 
     public static void AddEmployee(EmployeeBase? employee)
     {
         if (employee is not null)
         {
-            _employees.Add(employee);
+            Employees.Add(employee);
         }
         else
         {
@@ -19,7 +19,7 @@ public static class EmployeeRegistry
 
     public static void ListAllEmployees()
     {
-        if (_employees.Count == 0)
+        if (Employees.Count == 0)
         {
             var emptyListErrorMessage = "There are no employees yet!\n" +
                                         "You need to hire some people!";
@@ -28,10 +28,10 @@ public static class EmployeeRegistry
         else
         {
             Console.Clear();
-            var employeeCountInfo = $"There are {_employees.Count} employees in our company:\n";
+            var employeeCountInfo = $"There are {Employees.Count} employees in our company:\n";
             MyUtilities.PrintGreenColorMessage(employeeCountInfo);
 
-            foreach (var employee in _employees)
+            foreach (var employee in Employees)
             {
                 employee.GetDetails();
             }
@@ -40,7 +40,7 @@ public static class EmployeeRegistry
 
     public static void FindEmployee(string? name)
     {
-        var matchEmployees = _employees.FindAll(_ => _.Name!.ToLower() == name?.ToLower());
+        var matchEmployees = Employees.FindAll(_ => _.Name!.ToLower() == name?.ToLower());
         if (matchEmployees.Count > 0)
         {
             var additionalInfo = matchEmployees.Count == 1

@@ -1,4 +1,4 @@
-namespace IT_Academy_CSharp;
+namespace IT_Academy_CSharp.Homework5;
 
 public class Book
 {
