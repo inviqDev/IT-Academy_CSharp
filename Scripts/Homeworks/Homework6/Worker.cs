@@ -1,6 +1,4 @@
-using IT_Academy_CSharp.Scripts.SideFiles;
-
-namespace IT_Academy_CSharp.Scripts.Homeworks.Homework6;
+namespace IT_Academy_CSharp.Homework6;
 
 public class Worker : EmployeeBase
 {
@@ -12,18 +10,18 @@ public class Worker : EmployeeBase
         private set => SetWorkerExperience(value);
     }
 
-    public Enums.Shift Shift { get; private set; }
+    public Shifts Shift { get; private set; }
 
     public Worker()
     {
-        Position = Enums.Positions.Worker;
+        Position = Positions.Worker;
         Experience = GetWorkerExperience();
         Shift = GetWorkerShift();
     }
 
-    public Worker(string? name, int experience, Enums.Shift shift) : base(name)
+    public Worker(string? name, int experience, Shifts shift) : base(name)
     {
-        Position = Enums.Positions.Worker;
+        Position = Positions.Worker;
         Experience = experience;
         Shift = shift;
     }
@@ -62,7 +60,7 @@ public class Worker : EmployeeBase
         _experience++;
     }
 
-    private static Enums.Shift GetWorkerShift()
+    private static Shifts GetWorkerShift()
     {
         var menuOptionsAmount = 3;
         var validButtons = MyUtilities.GetAllowedNumericKeys(menuOptionsAmount);
@@ -75,9 +73,9 @@ public class Worker : EmployeeBase
             {
                 var shiftType = input switch
                 {
-                    ConsoleKey.D1 or ConsoleKey.NumPad1 => Enums.Shift.Day,
-                    ConsoleKey.D2 or ConsoleKey.NumPad2 => Enums.Shift.Evening,
-                    ConsoleKey.D3 or ConsoleKey.NumPad3 => Enums.Shift.Night,
+                    ConsoleKey.D1 or ConsoleKey.NumPad1 => Shifts.Day,
+                    ConsoleKey.D2 or ConsoleKey.NumPad2 => Shifts.Evening,
+                    ConsoleKey.D3 or ConsoleKey.NumPad3 => Shifts.Night,
                 };
 
                 var workerShiftTypeMessage = $"\nWorker's shift is set to {shiftType}\n";
@@ -90,7 +88,7 @@ public class Worker : EmployeeBase
         } while (true);
     }
 
-    public void ChangeWorkerShift(Enums.Shift shift)
+    public void ChangeWorkerShift(Shifts shift)
     {
         Shift = shift;
     }

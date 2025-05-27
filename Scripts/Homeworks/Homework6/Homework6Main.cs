@@ -1,6 +1,4 @@
-using IT_Academy_CSharp.Scripts.SideFiles;
-
-namespace IT_Academy_CSharp.Scripts.Homeworks.Homework6;
+namespace IT_Academy_CSharp.Homework6;
 
 /*
      Описание задачи:
@@ -164,8 +162,8 @@ public static class Homework6Main
     {
         var name = names[random.Next(names.Length)];
         var experience = random.Next(0, 25);
-        var shifts = Enum.GetValues(typeof(Enums.Shift));
-        var randomShift = (Enums.Shift)shifts.GetValue(random.Next(0, shifts.Length))!;
+        var shifts = Enum.GetValues(typeof(Shifts));
+        var randomShift = (Shifts)shifts.GetValue(random.Next(0, shifts.Length))!;
 
         var newWorker = new Worker(name, experience, randomShift);
         EmployeeRegistry.AddEmployee(newWorker);
@@ -175,11 +173,11 @@ public static class Homework6Main
     {
         var name = names[random.Next(names.Length)];
 
-        var departments = Enum.GetValues(typeof(Enums.Departments));
-        var randomDepartment = (Enums.Departments)departments.GetValue(random.Next(0, departments.Length))!;
+        var departments = Enum.GetValues(typeof(Departments));
+        var randomDepartment = (Departments)departments.GetValue(random.Next(0, departments.Length))!;
 
-        var projects = Enum.GetValues(typeof(Enums.Projects));
-        var randomProject = (Enums.Projects)projects.GetValue(random.Next(0, projects.Length))!;
+        var projects = Enum.GetValues(typeof(Projects));
+        var randomProject = (Projects)projects.GetValue(random.Next(0, projects.Length))!;
 
         var daysToAdd = random.Next(0, 180);
         var randomDeadline = DateTime.Today.AddDays(daysToAdd);
@@ -239,13 +237,13 @@ public static class Homework6Main
     {
         var invalidWorkerName = "Invalid !@#$%^&*() NAME";
         var invalidExperienceValue = -17;
-        var brokenWorker = new Worker(invalidWorkerName, invalidExperienceValue, Enums.Shift.Evening);
+        var brokenWorker = new Worker(invalidWorkerName, invalidExperienceValue, Shifts.Evening);
         EmployeeRegistry.AddEmployee(brokenWorker);
 
         var invalidManagerName = invalidWorkerName;
         var invalidProjectDeadlineValue = DateTime.MinValue;
-        var brokenManager = new Manager(invalidManagerName, Enums.Departments.Madrid,
-            Enums.Projects.CS3, invalidProjectDeadlineValue);
+        var brokenManager = new Manager(invalidManagerName, Departments.Madrid,
+            Projects.CS3, invalidProjectDeadlineValue);
         EmployeeRegistry.AddEmployee(brokenManager);
     }
 }

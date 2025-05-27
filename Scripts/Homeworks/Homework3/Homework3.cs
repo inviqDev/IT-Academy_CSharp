@@ -1,6 +1,4 @@
-using IT_Academy_CSharp.Scripts.SideFiles;
-
-namespace IT_Academy_CSharp.Scripts.Homeworks;
+namespace IT_Academy_CSharp.Homework3;
 
 public static class Homework3
 {
@@ -45,11 +43,11 @@ public static class Homework3
         var userAgeParity = userAge % 2 == 0 ? "even" : "odd";
         var userAgeGroup = userAge switch
         {
-            <= 2 => Enums.AgeGroup.Infant,
-            <= 12 => Enums.AgeGroup.Child,
-            <= 17 => Enums.AgeGroup.Teenager,
-            <= 59 => Enums.AgeGroup.Adult,
-            >= 60 => Enums.AgeGroup.Senior
+            <= 2 => AgeGroup.Infant,
+            <= 12 => AgeGroup.Child,
+            <= 17 => AgeGroup.Teenager,
+            <= 59 => AgeGroup.Adult,
+            >= 60 => AgeGroup.Senior
         };
 
         var summaryResultMessage = $"The age ({userAge}) you entered is {userAgeParity}.\n" +

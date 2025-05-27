@@ -1,12 +1,10 @@
-using IT_Academy_CSharp.Scripts.SideFiles;
-
-namespace IT_Academy_CSharp.Scripts.Homeworks.Homework6;
+namespace IT_Academy_CSharp.Homework6;
 
 public abstract class EmployeeBase
 {
     public string? Name { get; private set; }
 
-    public Enums.Positions Position { get; private protected set; }
+    public Positions Position { get; private protected set; }
 
     private protected EmployeeBase()
     {

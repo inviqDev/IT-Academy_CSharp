@@ -1,4 +1,4 @@
-namespace IT_Academy_CSharp.Scripts.Homeworks.Homework5;
+namespace IT_Academy_CSharp.Homework5;
 
 /*          #дз5
  * 1. Создайте класс Book:

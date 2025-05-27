@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace IT_Academy_CSharp.Scripts.SideFiles;
+namespace IT_Academy_CSharp;
 
 public static class MyUtilities
 {

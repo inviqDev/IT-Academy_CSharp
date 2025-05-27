@@ -1,6 +1,4 @@
-using IT_Academy_CSharp.Scripts.SideFiles;
-
-namespace IT_Academy_CSharp.Scripts.Homeworks;
+namespace IT_Academy_CSharp;
 
 public static class Homework2
 {
