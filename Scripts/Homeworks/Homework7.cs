@@ -23,8 +23,10 @@ public static class Homework7
 
     public static void RunHomework7()
     {
+        Console.WriteLine("\n\tHOMEWORK #7:\n");
         RunHomework7Part1();
         RunHomework7Part2();
+        MyUtilities.PrintSeparationLine('-');
     }
 
     private static void RunHomework7Part2()
@@ -117,7 +119,7 @@ public static class Homework7
         do
         {
             Console.Write(promptMessage);
-            if (GetUserInput(arraySize, out var input)) continue;
+            if (!GetUserInput(arraySize, out var input)) continue;
             if (FillArrayWithValidValues(out array, arraySize, input!)) return;
         } while (true);
     }
@@ -148,16 +150,35 @@ public static class Homework7
         input = Console.ReadLine()?.Trim().Split(" ") ?? [];
         foreach (var str in input)
         {
-            if (str.ToLower().Equals("exit!"))
+            if (str.Equals("exit!", StringComparison.CurrentCultureIgnoreCase))
             {
                 MyUtilities.ExitProgram();
             }
         }
 
-        if (input.Length == arraySize) return false;
+        var inputIsValid = ValidateInputTask1(arraySize, input);
+        return inputIsValid;
+    }
 
-        var errorMessage = "\n\tInvalid input!\n";
-        MyUtilities.PrintRedColorMessage(errorMessage);
+    private static bool ValidateInputTask1(int arraySize, string[] input)
+    {
+        if (input.Length != arraySize)
+        {
+            var detailedError = $"\n\"You have entered {input.Length} values!.\n" +
+                                $"Please enter {arraySize} values. Try again..\n";
+            MyUtilities.PrintRedColorMessage(detailedError);
+            return false;
+        }
+
+        foreach (var str in input)
+        {
+            if (int.TryParse(str, out var _)) continue;
+
+            var detailedError = $"\n\"{str}\" is not a whole number.\nPlease try again.\n";
+            MyUtilities.PrintRedColorMessage(detailedError);
+            return false;
+        }
+
         return true;
     }
 }
