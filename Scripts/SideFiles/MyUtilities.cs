@@ -11,8 +11,6 @@ public static class MyUtilities
 
     public static readonly TextInfo TextInfo = CultureInfo.InvariantCulture.TextInfo;
 
-    public static readonly StringBuilder StrBuilder = new();
-
     public static readonly string[] MaleFemaleNames50 =
     {
         "Scott", "George", "Sophia", "Daniel", "Steven", "Kenneth", "Isabella", "Amelia", "Eric",
@@ -27,14 +25,14 @@ public static class MyUtilities
     public static void PrintRedColorMessage(string? message)
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine($"\n{message}\n");
+        Console.Write($"{message}\n");
         Console.ResetColor();
     }
 
     public static void PrintGreenColorMessage(string? message)
     {
         Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine(message);
+        Console.Write($"{message}\n");
         Console.ResetColor();
     }
 
@@ -73,6 +71,27 @@ public static class MyUtilities
         Thread.Sleep(timeInMilliseconds);
     }
 
+    public static void ExitProgram()
+    {
+        Console.Clear();
+        Console.CursorVisible = false;
+        var currentCursorPosition = Console.GetCursorPosition();
+
+        for (var i = 3; i >= 0; i--)
+        {
+            Console.WriteLine($"\n\tExit in {i.ToString()}...");
+            if (i != 0)
+            {
+                Thread.Sleep(1000);
+            }
+
+            Console.SetCursorPosition(currentCursorPosition.Left, currentCursorPosition.Top);
+        }
+
+        MyUtilities.SayByeBye(1);
+        Environment.Exit(0);
+    }
+
     /// <summary>
     /// Returns an array of ConsoleKey values representing valid numeric digit keys
     /// (both main keyboard D0–D9 and NumPad0–NumPad9) up to the specified maximum digit.
@@ -100,10 +119,10 @@ public static class MyUtilities
             ConsoleKey.D9, ConsoleKey.NumPad9, // if lastAllowedDigit = 9
             ConsoleKey.D0, ConsoleKey.NumPad0, // if lastAllowedDigit = 10
         ];
-        
-         // ConsoleKeys need to be selected as pairs => value[0] and value[1] have the same logic, etc.
-         // To include all buttons <lastAllowedDigit> must be multiplied by 2
-         lastAllowedDigit *= 2;
+
+        // ConsoleKeys need to be selected as pairs => value[0] and value[1] have the same logic, etc.
+        // To include all buttons <lastAllowedDigit> must be multiplied by 2
+        lastAllowedDigit *= 2;
         return validInputButtons[..lastAllowedDigit];
     }
 }
