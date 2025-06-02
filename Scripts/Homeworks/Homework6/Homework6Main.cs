@@ -148,11 +148,11 @@ public static class Homework6Main
         {
             if (random.Next(0, 4) == 0)
             {
-                InstantiateRandomManagers(MyUtilities.MaleFemaleNames50, random);
+                InstantiateRandomManagers(MyUtilities.NamesBase, random);
                 continue;
             }
 
-            InstatntiateRandomWorkers(MyUtilities.MaleFemaleNames50, random);
+            InstatntiateRandomWorkers(MyUtilities.NamesBase, random);
         }
 
         InstantiateSomeInvalidEmployees();
