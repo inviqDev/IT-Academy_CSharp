@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace IT_Academy_CSharp.Homework9;
 
 public static class Homework9Main
@@ -5,23 +7,17 @@ public static class Homework9Main
     public static void RunHomework9()
     {
         RunHomework9Task1();
-        // RunHomework9Task2();
-        // RunHomework9Task3();
+        RunHomework9Task2();
+        RunHomework9Task3();
     }
 
     private static void RunHomework9Task1()
     {
-        var students = CreateStudentsList(97);
+        var students = CreateStudentsList(3);
 
         if (students.Count > 0)
         {
-            foreach (var student in students)
-            {
-                Console.WriteLine(student);
-            }
-
-            Console.WriteLine();
-
+            PrintStudentBase(students);
             PrintReversedScores(students);
             PrintYoungestStudentInfo(students);
         }
@@ -29,6 +25,17 @@ public static class Homework9Main
         {
             Console.WriteLine("No students found.");
         }
+
+        MyUtilities.PrintSeparationLine('-');
+    }
+
+    private static void PrintStudentBase(List<Student> students)
+    {
+        Console.WriteLine($"There are {students.Count} students in out base:");
+        var output = new StringBuilder().AppendJoin("\n", students);
+
+        MyUtilities.PrintGreenColorMessage(output.ToString());
+        Console.WriteLine();
     }
 
     private static List<Student> CreateStudentsList(int studentsCount)
@@ -45,19 +52,16 @@ public static class Homework9Main
     private static void PrintReversedScores(List<Student> students)
     {
         var scores = students.OrderByDescending(s => s.AverageScore);
+        var output = new StringBuilder().AppendJoin("\n", scores);
 
         Console.WriteLine("Reversed students scores: ");
-        foreach (var score in scores)
-        {
-            Console.Write($"{score.AverageScore:F2} ");
-        }
-
-        Console.WriteLine();
+        MyUtilities.PrintGreenColorMessage(output.ToString());
     }
 
     private static void PrintYoungestStudentInfo(List<Student> students)
     {
-        var youngestStudents = students.FindAll(s => s.Age == students.Min(stud => stud.Age));
+        var minAge = students.Min(s => s.Age);
+        var youngestStudents = students.FindAll(s => s.Age == minAge);
 
         var message = youngestStudents.Count == 1
             ? "\nThe youngest student is:"
@@ -75,23 +79,36 @@ public static class Homework9Main
         var products = new Dictionary<string, double>
         {
             ["apple"] = 1.5,
-            ["banana"] = 2.2,
             ["orange"] = 2.8,
             ["kiwi"] = 4.0,
+            ["banana"] = 2.2,
             ["pineapple"] = 5.5,
+            ["grape"] = 2.4,
             ["mango"] = 3.9,
-            ["grape"] = 2.4
         };
 
-        PrintDictionary(products);
-        FindProductByPrice(products);
+        if (products.Count > 0)
+        {
+            var sortedProducts = products
+                .OrderBy(p => p.Key).ToDictionary();
 
-        var increnent = 1.1;
-        ChangeAllProductsPrice(products, increnent);
-        PrintDictionary(products);
+            PrintDictionary(sortedProducts);
+            FindProductByName(sortedProducts);
+
+            var increment = 1.1;
+            ChangeProductsPrice(sortedProducts, increment);
+            PrintDictionary(sortedProducts);
+        }
+        else
+        {
+            var errorMessage = "There are no products with that name.";
+            MyUtilities.PrintRedColorMessage(errorMessage);
+        }
+
+        MyUtilities.PrintSeparationLine('-');
     }
 
-    private static void ChangeAllProductsPrice(Dictionary<string, double> products, double increment)
+    private static void ChangeProductsPrice(Dictionary<string, double> products, double increment)
     {
         foreach (var key in products.Keys.ToList())
         {
@@ -110,19 +127,18 @@ public static class Homework9Main
         Console.WriteLine();
     }
 
-    private static void FindProductByPrice(Dictionary<string, double> products)
+    private static void FindProductByName(Dictionary<string, double> products)
     {
         Console.Write("Enter product name: ");
         var input = Console.ReadLine()?.Trim().ToLowerInvariant() ?? string.Empty;
 
         var message = products.TryGetValue(input, out var price)
-            ? $"The price of \"{input}\" is: {price:F2} $"
-            : $"Product \"{input}\" not found.";
+            ? $"The price of the \"{input}\" is: {price:F2} $"
+            : $"The product \"{input}\" is not found.";
 
         MyUtilities.PrintGreenColorMessage(message);
         Console.WriteLine();
     }
-
 
     private static void RunHomework9Task3()
     {
@@ -149,6 +165,8 @@ public static class Homework9Main
         {
             Console.WriteLine($"{word.Key}: {word.Value}");
         }
+
+        MyUtilities.PrintSeparationLine('-');
     }
 
     private static bool GetUserInput(out string input)
@@ -156,7 +174,7 @@ public static class Homework9Main
         Console.WriteLine("Enter any text to count unique words: ");
         input = Console.ReadLine()?.Trim().ToLowerInvariant() ?? string.Empty;
 
-        if (input is not (null or "")) return false;
+        if (string.IsNullOrWhiteSpace(input)) return false;
 
         MyUtilities.PrintRedColorMessage("Your input is invalid!");
         return true;

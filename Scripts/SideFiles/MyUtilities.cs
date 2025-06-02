@@ -1,11 +1,12 @@
 using System.Globalization;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace IT_Academy_CSharp;
 
 public static class MyUtilities
 {
+    public static readonly Random Random = new();
+    
     public static readonly Regex CredentialValidation =
         new(@"^(?:[A-Za-z]+(?:[- ][A-Za-z]+)*|[А-Яа-яЁё]+(?:[- ][А-Яа-яЁё]+)*)$");
 
@@ -28,7 +29,7 @@ public static class MyUtilities
         '[', ']', '{', '}', '\"', '\'', '\t', '\n', '\r'
     };
 
-    public static string GetRandomName(int randomValue) => NamesBase[randomValue];
+    public static string GetRandomName() => NamesBase[Random.Next(0, NamesBase.Length)];
 
     public static void PrintRedColorMessage(string? message)
     {

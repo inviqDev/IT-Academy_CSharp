@@ -9,7 +9,7 @@ public class Student
 
     public Student()
     {
-        Name = MyUtilities.GetRandomName(Random.Next(0, MyUtilities.NamesBase.Length));
+        Name = MyUtilities.GetRandomName();
         Age = Random.Next(17, 34);
         AverageScore = SetRandomAverageScore();
     }
