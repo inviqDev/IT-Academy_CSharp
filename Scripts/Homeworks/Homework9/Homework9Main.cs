@@ -142,7 +142,7 @@ public static class Homework9Main
 
     private static void RunHomework9Task3()
     {
-        if (GetValidUserInput(out var input)) return;
+        if (InvalidUserInput(out var input)) return;
 
         var separators = MyUtilities.DefaultSeparatorChars;
         var separatedWords = input.Split(separators, StringSplitOptions.RemoveEmptyEntries);
@@ -169,7 +169,7 @@ public static class Homework9Main
         MyUtilities.PrintSeparationLine('-');
     }
 
-    private static bool GetValidUserInput(out string input)
+    private static bool InvalidUserInput(out string input)
     {
         Console.WriteLine("Enter any text to count unique words: ");
         input = Console.ReadLine()?.Trim().ToLowerInvariant() ?? string.Empty;
