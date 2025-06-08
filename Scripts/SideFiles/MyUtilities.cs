@@ -1,17 +1,18 @@
 using System.Globalization;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace IT_Academy_CSharp;
 
 public static class MyUtilities
 {
+    public static readonly Random Random = new();
+    
     public static readonly Regex CredentialValidation =
         new(@"^(?:[A-Za-z]+(?:[- ][A-Za-z]+)*|[А-Яа-яЁё]+(?:[- ][А-Яа-яЁё]+)*)$");
 
     public static readonly TextInfo TextInfo = CultureInfo.InvariantCulture.TextInfo;
 
-    public static readonly string[] MaleFemaleNames50 =
+    public static readonly string[] NamesBase =
     {
         "Scott", "George", "Sophia", "Daniel", "Steven", "Kenneth", "Isabella", "Amelia", "Eric",
         "Joshua", "Charles", "Larry", "Gary", "Barbara", "Jacob", "Karen", "Michael", "Kevin",
@@ -21,6 +22,14 @@ public static class MyUtilities
         "Justin", "David", "Jonathan", "Emma", "Patricia", "Richard", "Mia", "Thomas", "Mark", "Donald",
         "Paul", "Jessica", "John", "Joseph", "Mary"
     };
+
+    public static readonly char[] DefaultSeparatorChars =
+    {
+        ' ', '.', ',', '!', '?', ';', ':', '-', '(', ')',
+        '[', ']', '{', '}', '\"', '\'', '\t', '\n', '\r'
+    };
+
+    public static string GetRandomName() => NamesBase[Random.Next(0, NamesBase.Length)];
 
     public static void PrintRedColorMessage(string? message)
     {
