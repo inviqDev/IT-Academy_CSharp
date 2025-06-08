@@ -174,12 +174,9 @@ public static class Homework9Main
         Console.WriteLine("Enter any text to count unique words: ");
         input = Console.ReadLine()?.Trim().ToLowerInvariant() ?? string.Empty;
 
-        if (string.IsNullOrWhiteSpace(input))
-        {
-            MyUtilities.PrintRedColorMessage("Your input is invalid!");
-            return true;
-        }
-
-        return false;
+        if (!string.IsNullOrWhiteSpace(input)) return false;
+        
+        MyUtilities.PrintRedColorMessage("Your input is invalid!");
+        return true;
     }
 }
