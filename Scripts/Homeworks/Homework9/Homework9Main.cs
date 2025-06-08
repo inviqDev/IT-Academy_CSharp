@@ -7,7 +7,7 @@ public static class Homework9Main
     public static void RunHomework9()
     {
         RunHomework9Task1();
-        RunHomework9Task2();
+        RunHomework9Task2(); 
         RunHomework9Task3();
     }
 
@@ -142,7 +142,7 @@ public static class Homework9Main
 
     private static void RunHomework9Task3()
     {
-        if (GetUserInput(out var input)) return;
+        if (GetValidUserInput(out var input)) return;
 
         var separators = MyUtilities.DefaultSeparatorChars;
         var separatedWords = input.Split(separators, StringSplitOptions.RemoveEmptyEntries);
@@ -169,14 +169,17 @@ public static class Homework9Main
         MyUtilities.PrintSeparationLine('-');
     }
 
-    private static bool GetUserInput(out string input)
+    private static bool GetValidUserInput(out string input)
     {
         Console.WriteLine("Enter any text to count unique words: ");
         input = Console.ReadLine()?.Trim().ToLowerInvariant() ?? string.Empty;
 
-        if (string.IsNullOrWhiteSpace(input)) return false;
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            MyUtilities.PrintRedColorMessage("Your input is invalid!");
+            return true;
+        }
 
-        MyUtilities.PrintRedColorMessage("Your input is invalid!");
-        return true;
+        return false;
     }
 }
