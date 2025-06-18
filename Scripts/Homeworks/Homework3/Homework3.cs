@@ -1,4 +1,7 @@
-namespace IT_Academy_CSharp.Homework3;
+using IT_Academy_CSharp.Homeworks.Homework3.Enums;
+using IT_Academy_CSharp.SideFiles;
+
+namespace IT_Academy_CSharp.Homeworks.Homework3;
 
 public static class Homework3
 {

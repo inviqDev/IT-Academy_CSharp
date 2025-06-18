@@ -1,4 +1,6 @@
-namespace IT_Academy_CSharp;
+using IT_Academy_CSharp.SideFiles;
+
+namespace IT_Academy_CSharp.Homeworks;
 
 public static partial class Homework4
 {

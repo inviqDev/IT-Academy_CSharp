@@ -1,4 +1,6 @@
-namespace IT_Academy_CSharp.Homework5;
+using IT_Academy_CSharp.SideFiles;
+
+namespace IT_Academy_CSharp.Homeworks.Homework5;
 
 public class Book
 {

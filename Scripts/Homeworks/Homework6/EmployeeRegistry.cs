@@ -1,4 +1,6 @@
-namespace IT_Academy_CSharp.Homework6;
+using IT_Academy_CSharp.SideFiles;
+
+namespace IT_Academy_CSharp.Homeworks.Homework6;
 
 public static class EmployeeRegistry
 {

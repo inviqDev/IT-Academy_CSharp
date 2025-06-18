@@ -1,4 +1,4 @@
-namespace IT_Academy_CSharp.Homework3;
+namespace IT_Academy_CSharp.Homeworks.Homework3.Enums;
 
 public enum AgeGroup
 {
