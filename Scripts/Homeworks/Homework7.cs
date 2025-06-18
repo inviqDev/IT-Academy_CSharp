@@ -1,6 +1,7 @@
 using System.Text;
+using IT_Academy_CSharp.SideFiles;
 
-namespace IT_Academy_CSharp;
+namespace IT_Academy_CSharp.Homeworks;
 
 /*
  * Задание 1:

@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace IT_Academy_CSharp;
+namespace IT_Academy_CSharp.SideFiles;
 
 public static class MyUtilities
 {
