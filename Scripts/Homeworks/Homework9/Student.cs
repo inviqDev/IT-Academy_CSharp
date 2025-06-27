@@ -1,4 +1,6 @@
-namespace IT_Academy_CSharp.Homework9;
+using IT_Academy_CSharp.SideFiles;
+
+namespace IT_Academy_CSharp.Homeworks.Homework9;
 
 public class Student
 {

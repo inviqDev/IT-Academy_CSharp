@@ -1,6 +1,7 @@
 using System.Text;
+using IT_Academy_CSharp.SideFiles;
 
-namespace IT_Academy_CSharp.Homework9;
+namespace IT_Academy_CSharp.Homeworks.Homework9;
 
 public static class Homework9Main
 {
